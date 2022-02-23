@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AutowaterApplication<autowater>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.homeapp.autowater.AutowaterApplication",
+            "projectName": "autowater",
+            "args": ""
+        }
+    ]
+}
