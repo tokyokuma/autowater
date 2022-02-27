@@ -21,11 +21,11 @@ public class UserServiceImpl implements UserService {
         user.setRole("ROLE_GENERAL");
         mapper.insertOne(user);
     }
-
+    
     /** ユーザー取得 */
     @Override
-    public List<MUser> getUsers() {
-        return mapper.findMany();
+    public List<MUser> getUsers(MUser user) {
+        return mapper.findMany(user);
     }
 
     /** ユーザー取得(1件) */
