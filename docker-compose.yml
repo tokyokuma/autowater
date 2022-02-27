@@ -19,7 +19,7 @@ services:
     image: dpage/pgadmin4:latest
     container_name: pgadmin4
     ports:
-      - 80:80
+      - 81:81
     volumes:
       - ./pgadmin:/var/lib/pgadmin/storage
     environment:
@@ -35,6 +35,6 @@ services:
     volumes:
       -  ./:/app
     ports:
-      - 8080:8080
+      - 80:8080
     depends_on:
       - postgres
