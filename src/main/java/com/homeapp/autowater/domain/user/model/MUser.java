@@ -1,8 +1,8 @@
 package com.homeapp.autowater.domain.user.model;
 
-import lombok.Data;
-
 import java.util.Date;
+
+import lombok.Data;
 
 @Data
 public class MUser {
@@ -14,4 +14,5 @@ public class MUser {
     private Integer gender;
     private Integer departmentId;
     private String role;
+    private Department department;
 }

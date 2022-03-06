@@ -15,6 +15,13 @@
     <result column="gender" property="gender" />
     <result column="department_id" property="departmentId" />
     <result column="role" property="role" />
+    <association property="department" resultMap="department" />
+  </resultMap>
+
+  <!-- マッピング定義(部署) -->
+  <resultMap type="com.homeapp.autowater.domain.user.model.Department" id="department">
+    <id column="department_id" property="departmentId" />
+    <result column="department_name" property="departmentName" />
   </resultMap>
 
   <!-- ユーザー1件登録 -->
@@ -47,6 +54,14 @@
       *
     from
       m_user
+    <where>
+      <if test="userId != null">
+        user_id like '%' || #{userId} || '%' 
+      </if>
+      <if test="userName != null">
+        and user_name like '%' || #{userName} || '%' 
+      </if>
+    </where>
   </select>
 
   <!-- ユーザー1件検索 -->
@@ -55,7 +70,27 @@
       *
     from
       m_user
+      left join m_department on m_user.department_id = m_department.department_id
     where
       user_id = #{userId}
   </select>
+
+  <!-- ユーザー1件更新 -->
+  <update id="updateOne">
+    update
+      m_user
+    set
+      password = #{password}
+     ,user_name = #{userName}
+    where
+      user_id = #{userId}
+  </update>
+
+  <!-- ユーザー1件削除 -->
+  <delete id="deleteOne">
+    delete from
+      m_user
+    where
+      user_id = #{userId}
+  </delete>
 </mapper>
