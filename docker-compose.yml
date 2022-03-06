@@ -36,5 +36,6 @@ services:
       -  ./:/app
     ports:
       - 80:8080
+    command: ./gradlew bootRun
     depends_on:
       - postgres
