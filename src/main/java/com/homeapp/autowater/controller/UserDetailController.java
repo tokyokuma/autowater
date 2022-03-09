@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import lombok.extern.slf4j.Slf4j;
+
 import com.homeapp.autowater.domain.user.model.MUser;
 import com.homeapp.autowater.domain.user.service.UserService;
 import com.homeapp.autowater.form.UserDetailForm;
 
 @Controller
 @RequestMapping("/user")
+@Slf4j
 public class UserDetailController {
     
     @Autowired
@@ -47,10 +50,14 @@ public class UserDetailController {
     @PostMapping(value = "/detail", params="update")
     public String updateUser(UserDetailForm form, Model model){
 
-        //ユーザーを更新
-        userService.updateUserOne(form.getUserId(),
-            form.getPassword(),
-            form.getUserName());
+        try{
+            //ユーザーを更新
+            userService.updateUserOne(form.getUserId(),
+                form.getPassword(),
+                form.getUserName());
+        } catch (Exception e) {
+            log.error("ユーザー更新でエラー", e);
+        }
 
         //ユーザー一覧画面にリダイレクト
         return "redirect:/user/list";
