@@ -1,8 +1,12 @@
 package com.homeapp.autowater.form;
 
-import lombok.Data;
-
 import java.util.Date;
+import java.util.List;
+
+import com.homeapp.autowater.domain.user.model.Department;
+import com.homeapp.autowater.domain.user.model.Salary;
+
+import lombok.Data;
 
 @Data
 public class UserDetailForm {
@@ -12,4 +16,6 @@ public class UserDetailForm {
     private Date birthday;
     private Integer age;
     private Integer gender;
+    private Department department;
+    private List<Salary> salaryList;
 }
